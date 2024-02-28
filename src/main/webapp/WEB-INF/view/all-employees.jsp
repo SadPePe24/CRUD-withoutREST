@@ -1,38 +1,33 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Данила
-  Date: 28.02.2024
-  Time: 18:23
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>All Employees</title>
 </head>
 <body>
 
-    <h2> All Employees </h2>
-    <br>
-    <table>
+<h2> All Employees </h2>
+<br>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Department</th>
+        <th>Salary </th>
+    </tr>
+
+    <c:forEach var="emp" items="${allEmps}">
         <tr>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Department</th>
-            <th>Salary </th>
+            <td>${emp.name}</td>
+            <td>${emp.surname}</td>
+            <td>${emp.department}</td>
+            <td>${emp.salary}</td>
         </tr>
+    </c:forEach>
 
-        <c:forEach var = "emp" items = "${allEmps}">
-            <tr>
-                <td>${emp.id}</td>
-                <td>${emp.name}</td>
-                <td>${emp.surname}</td>
-                <td>${emp.department}</td>
-                <td>${emp.salary}</td>
-            </tr>
-        </c:forEach>
-
-    </table>
-
+</table>
+<br>
+<input type="button" value="Add" onclick="window.location.href = 'addNewEmployee' "/>
 </body>
 </html>
+
