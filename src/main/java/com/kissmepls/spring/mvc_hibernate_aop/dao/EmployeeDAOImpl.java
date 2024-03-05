@@ -41,7 +41,7 @@ public class EmployeeDAOImpl implements EmployeeDAO
     }
 
     @Override
-    public void deleyeEmployee(int id)
+    public void deleteEmployee(int id)
     {
         Session session = sessionFactory.getCurrentSession();
 

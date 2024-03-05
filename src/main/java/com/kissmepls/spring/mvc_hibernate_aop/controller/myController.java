@@ -3,6 +3,7 @@ package com.kissmepls.spring.mvc_hibernate_aop.controller;
 import com.kissmepls.spring.mvc_hibernate_aop.dao.EmployeeDAO;
 import com.kissmepls.spring.mvc_hibernate_aop.entity.Detail;
 import com.kissmepls.spring.mvc_hibernate_aop.entity.Employee;
+import com.kissmepls.spring.mvc_hibernate_aop.service.DetailService;
 import com.kissmepls.spring.mvc_hibernate_aop.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ public class myController
 {
     @Autowired
     private EmployeeService employeeService;
+
+    @Autowired
+    private DetailService detailService;
 
     @RequestMapping("/")
     public String showAllEmployees(Model model)
@@ -72,5 +76,16 @@ public class myController
     {
         employeeService.deleteEmployee(id);
         return "redirect: /";
+    }
+// ****************************************************************************
+
+    @RequestMapping("/details")
+    public String showAllDetails(Model model)
+    {
+
+        List<Detail> allDetails = detailService.getAllDetails();
+        model.addAttribute("allDetails", allDetails);
+
+        return "all-details";
     }
 }

@@ -28,19 +28,22 @@ public class Detail
     private String birthDay;
 
     @Column (name = "date_hired")
-    private String hiderDay;
+    private String hiredDay;
+
+    @OneToOne (mappedBy = "detail")
+    private Employee employee;
 
     public Detail()
     {
     }
 
-    public Detail(String city, String phone, String eMail, String birthDay, String hiderDay)
+    public Detail(String city, String phone, String eMail, String birthDay, String hiredDay)
     {
         this.city = city;
         this.phone = phone;
         this.eMail = eMail;
         this.birthDay = birthDay;
-        this.hiderDay = hiderDay;
+        this.hiredDay = hiredDay;
     }
 
     @Override
@@ -52,7 +55,7 @@ public class Detail
                 ", phone='" + phone + '\'' +
                 ", eMail='" + eMail + '\'' +
                 ", birthDay='" + birthDay + '\'' +
-                ", hiderDay='" + hiderDay + '\'' +
+                ", hiderDay='" + hiredDay + '\'' +
                 '}';
     }
 }
