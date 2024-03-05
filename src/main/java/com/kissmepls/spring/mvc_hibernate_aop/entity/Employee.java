@@ -27,6 +27,10 @@ public class Employee
     @Column (name = "salary")
     private int salary;
 
+    @OneToOne (cascade = CascadeType.ALL)
+    @JoinColumn (name = "details_id")
+    private Detail detail;
+
     public Employee()
     {
 

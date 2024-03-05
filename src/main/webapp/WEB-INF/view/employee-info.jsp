@@ -1,92 +1,53 @@
-<%--<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>--%>
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-<%--      <title>Employee INFO</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--      <h2> Employee INFO</h2>--%>
-<%--      <br>--%>
-<%--      <form:form action="saveEmployee" modelAttribute="employee">--%>
-
-<%--            <form:hidden path="id"/>--%>
-
-<%--            Name: <form:input path="name"/> <br><br>--%>
-<%--            Surname: <form:input path="surname"/> <br><br>--%>
-<%--            Department: <form:input path="department"/> <br><br>--%>
-<%--            Salary: <form:input path="salary"/> <br><br>--%>
-<%--            <input type="submit" value="OK">--%>
-<%--      </form:form>--%>
-<%--</body>--%>
-<%--</html>--%>
-
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-      <title>Employee INFO</title>
+      <title>Add New Employee</title>
       <style>
-          body {
-              font-family: Arial, sans-serif;
-              margin: 0;
-              padding: 0;
-              background-color: #f7f7f7;
-          }
-
-          h2 {
-              text-align: center;
-              color: #333;
-          }
-
-          form {
-              width: 50%;
-              margin: 20px auto;
-              background-color: #fff;
-              padding: 20px;
-              box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-              border-radius: 8px;
-          }
-
-          label {
-              display: block;
-              margin-bottom: 10px;
-          }
-
-          input[type="text"], input[type="submit"] {
-              width: 100%;
-              padding: 10px;
-              margin-bottom: 20px;
+          /* Стили для выезжающего меню */
+          .additional-info {
+              display: none;
+              position: absolute;
+              background-color: #f9f9f9;
               border: 1px solid #ccc;
-              border-radius: 4px;
-              box-sizing: border-box;
-          }
-
-          input[type="submit"] {
-              background-color: #4CAF50;
-              color: white;
-              border: none;
-              cursor: pointer;
-          }
-
-          input[type="submit"]:hover {
-              background-color: #45a049;
+              padding: 10px;
+              z-index: 1;
           }
       </style>
+      <script>
+          // JavaScript для отображения и скрытия выезжающего меню
+          function toggleAdditionalInfo() {
+              var additionalInfo = document.getElementById("additionalInfo");
+              if (additionalInfo.style.display === "none") {
+                  additionalInfo.style.display = "block";
+              } else {
+                  additionalInfo.style.display = "none";
+              }
+          }
+      </script>
 </head>
 <body>
-<h2>Employee INFO</h2>
-<form:form action="saveEmployee" modelAttribute="employee">
-      <form:hidden path="id"/>
-      <label for="name">Name:</label>
-      <form:input path="name" id="name"/><br><br>
-      <label for="surname">Surname:</label>
-      <form:input path="surname" id="surname"/><br><br>
-      <label for="department">Department:</label>
-      <form:input path="department" id="department"/><br><br>
-      <label for="salary">Salary:</label>
-      <form:input path="salary" id="salary"/><br><br>
+
+<h2>Add New Employee</h2>
+<form action="saveEmployee" method="post">
+      Name: <input type="text" name="name"><br>
+      Surname: <input type="text" name="surname"><br>
+      Department: <input type="text" name="department"><br>
+      Salary: <input type="text" name="salary"><br>
+      <!-- Кнопка для отображения/скрытия выезжающего меню -->
+      <input type="button" value="Additional Info" onclick="toggleAdditionalInfo()">
+      <!-- Выезжающее меню с дополнительной информацией -->
+      <div id="additionalInfo" class="additional-info">
+            City: <input type="text" name="city"><br>
+            Phone Number: <input type="text" name="phone"><br>
+            Email: <input type="text" name="eMail"><br>
+            Birth Day: <input type="text" name="birthDay"><br>
+            Hired Day: <input type="text" name="hiredDay"><br>
+      </div>
+      <!-- Кнопка для сохранения сотрудника -->
       <input type="submit" value="OK">
-</form:form>
+</form>
+
 </body>
 </html>
+
 

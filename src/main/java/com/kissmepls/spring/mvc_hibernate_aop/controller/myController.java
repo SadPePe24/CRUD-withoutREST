@@ -1,6 +1,7 @@
 package com.kissmepls.spring.mvc_hibernate_aop.controller;
 
 import com.kissmepls.spring.mvc_hibernate_aop.dao.EmployeeDAO;
+import com.kissmepls.spring.mvc_hibernate_aop.entity.Detail;
 import com.kissmepls.spring.mvc_hibernate_aop.entity.Employee;
 import com.kissmepls.spring.mvc_hibernate_aop.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +37,25 @@ public class myController
         return "employee-info";
     }
 
-    @RequestMapping("/saveEmployee")
-    public String saveEmployee(@ModelAttribute("employee") Employee employee)
-    {
-        employeeService.saveEmployee(employee);
+//    @RequestMapping("/saveEmployee")
+//    public String saveEmployee(@ModelAttribute("employee") Employee employee, @RequestParam ""
+//    {
+//        employeeService.saveEmployee(employee);
+//
+//        return "redirect: /";
+//    }
 
-        return "redirect: /";
+    @RequestMapping("/saveEmployee")
+    public String saveEmployee(@ModelAttribute("employee") Employee employee,
+                               @RequestParam("city") String city,
+                               @RequestParam("phone") String phoneNumber,
+                               @RequestParam("eMail") String eMail,
+                               @RequestParam("birthDay") String birthDay,
+                               @RequestParam("hiredDay") String hiredDay) {
+        Detail details = new Detail(city, phoneNumber, eMail, birthDay, hiredDay);
+        employee.setDetail(details);
+        employeeService.saveEmployee(employee);
+        return "redirect:/";
     }
 
     @RequestMapping("/updateInfo")
