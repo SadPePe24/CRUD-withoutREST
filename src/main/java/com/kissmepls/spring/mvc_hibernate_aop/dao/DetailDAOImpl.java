@@ -20,7 +20,7 @@ public class DetailDAOImpl implements DetailDAO
     public List<Detail> getAllDetails()
     {
         Session session = sessionFactory.getCurrentSession();
-        List<Detail> allDetails = session.createQuery("from Detail", Detail.class)
+        List<Detail> allDetails = session.createQuery("from Detail order by id", Detail.class)
                 .getResultList();
         return allDetails;
     }

@@ -30,7 +30,7 @@ public class Detail
     @Column (name = "date_hired")
     private String hiredDay;
 
-    @OneToOne (mappedBy = "detail")
+    @OneToOne (mappedBy = "detail", cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     private Employee employee;
 
     public Detail()

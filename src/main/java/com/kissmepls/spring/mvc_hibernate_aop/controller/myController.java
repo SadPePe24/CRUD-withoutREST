@@ -41,23 +41,33 @@ public class myController
         return "employee-info";
     }
 
-//    @RequestMapping("/saveEmployee")
-//    public String saveEmployee(@ModelAttribute("employee") Employee employee, @RequestParam ""
-//    {
-//        employeeService.saveEmployee(employee);
-//
-//        return "redirect: /";
-//    }
 
     @RequestMapping("/saveEmployee")
     public String saveEmployee(@ModelAttribute("employee") Employee employee,
-                               @RequestParam("city") String city,
-                               @RequestParam("phone") String phoneNumber,
-                               @RequestParam("eMail") String eMail,
-                               @RequestParam("birthDay") String birthDay,
-                               @RequestParam("hiredDay") String hiredDay) {
-        Detail details = new Detail(city, phoneNumber, eMail, birthDay, hiredDay);
-        employee.setDetail(details);
+                               @RequestParam("detail.city") String city,
+                               @RequestParam("detail.phone") String phoneNumber,
+                               @RequestParam("detail.EMail") String eMail,
+                               @RequestParam("detail.birthDay") String birthDay,
+                               @RequestParam("detail.hiredDay") String hiredDay)
+    {
+//        Detail details = new Detail(city, phoneNumber, eMail, birthDay, hiredDay);
+//        employee.setDetail(details);
+//        employeeService.saveEmployee(employee);
+
+//        Detail detail = employee.getDetail();
+//        detail.setCity(city);
+//        detail.setPhone(phoneNumber);
+//        detail.setEMail(eMail);
+//        detail.setBirthDay(birthDay);
+//        detail.setHiredDay(hiredDay);
+//        employee.setDetail(detail);
+//        employeeService.saveEmployee(employee);
+
+        employee.getDetail().setCity(city);
+        employee.getDetail().setPhone(phoneNumber);
+        employee.getDetail().setEMail(eMail);
+        employee.getDetail().setBirthDay(birthDay);
+        employee.getDetail().setHiredDay(hiredDay);
         employeeService.saveEmployee(employee);
         return "redirect:/";
     }
@@ -71,8 +81,8 @@ public class myController
         return "employee-info";
     }
 
-    @RequestMapping ("/deleteEmployee")
-    public String deleteEmployee(@RequestParam ("empId") int id)
+    @RequestMapping("/deleteEmployee")
+    public String deleteEmployee(@RequestParam("empId") int id)
     {
         employeeService.deleteEmployee(id);
         return "redirect: /";

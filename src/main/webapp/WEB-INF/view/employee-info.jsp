@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -28,24 +29,26 @@
 <body>
 
 <h2>Add New Employee</h2>
-<form action="saveEmployee" method="post">
-      Name: <input type="text" name="name"><br>
-      Surname: <input type="text" name="surname"><br>
-      Department: <input type="text" name="department"><br>
-      Salary: <input type="text" name="salary"><br>
+<form:form action="saveEmployee" modelAttribute="employee">
+      <form:hidden path="id"/>
+      <form:hidden path="detail.id"/>
+      Name: <form:input path="name"/><br>
+      Surname: <form:input path="surname"/><br>
+      Department: <form:input path="department"/><br>
+      Salary: <form:input path="salary"/><br>
       <!-- Кнопка для отображения/скрытия выезжающего меню -->
       <input type="button" value="Additional Info" onclick="toggleAdditionalInfo()">
       <!-- Выезжающее меню с дополнительной информацией -->
       <div id="additionalInfo" class="additional-info">
-            City: <input type="text" name="city"><br>
-            Phone Number: <input type="text" name="phone"><br>
-            Email: <input type="text" name="eMail"><br>
-            Birth Day: <input type="text" name="birthDay"><br>
-            Hired Day: <input type="text" name="hiredDay"><br>
+            City: <form:input path="detail.city"/><br>
+            Phone Number: <form:input path="detail.phone"/><br>
+            Email: <form:input path="detail.EMail"/><br>
+            Birth Day: <form:input path="detail.birthDay"/><br>
+            Hired Day: <form:input path="detail.hiredDay"/><br>
       </div>
       <!-- Кнопка для сохранения сотрудника -->
       <input type="submit" value="OK">
-</form>
+</form:form>
 
 </body>
 </html>
