@@ -5,7 +5,6 @@
 <head>
       <title>Add/Edit Employee</title>
       <style>
-          /* Styles for the dropdown menu */
           .additional-info {
               display: none;
               position: absolute;
@@ -13,7 +12,7 @@
               border: 1px solid #ccc;
               padding: 10px;
               z-index: 1;
-              width: 265px; /* Adjust width as needed */
+              width: 265px;
           }
           .toggle-btn {
               padding: 8px 16px;
@@ -32,12 +31,12 @@
           }
           .form-group label {
               display: inline-block;
-              width: 100px; /* Adjust label width as needed */
+              width: 100px;
               font-weight: bold;
           }
           .form-group input[type="text"] {
               padding: 8px;
-              width: 180px; /* Adjust input width as needed */
+              width: 180px;
               border: 1px solid #ccc;
               border-radius: 4px;
               box-sizing: border-box;
@@ -53,7 +52,6 @@
           .submit-btn:hover {
               background-color: #218838;
           }
-          /* Center align all elements */
           body {
               text-align: center;
           }
@@ -63,7 +61,6 @@
           }
       </style>
       <script>
-          // JavaScript to toggle display of the additional info
           function toggleAdditionalInfo() {
               var additionalInfo = document.getElementById("additionalInfo");
               if (additionalInfo.style.display === "none") {
@@ -97,9 +94,7 @@
                   <label for="salary">Salary:</label>
                   <form:input path="salary" id="salary"/>
             </div>
-            <!-- Button to toggle additional info -->
             <button class="toggle-btn" type="button" onclick="toggleAdditionalInfo()">Additional Info</button>
-            <!-- Additional info dropdown -->
             <div id="additionalInfo" class="additional-info">
                   <div class="form-group">
                         <label for="city">City:</label>
@@ -122,14 +117,12 @@
                         <form:input path="detail.hiredDay" id="hiredDay"/>
                   </div>
             </div>
-            <!-- Button to submit the form -->
             <input class="submit-btn" type="submit" value="OK">
       </form:form>
 </div>
 
 </body>
 </html>
-
 
 
 
